@@ -1,7 +1,8 @@
 #include <SparkFun_LPS25HB_Arduino_Library.h>
-LPS25HB pressureSensor;\
+#include <SparkFun_Qwiic_OpenLog_Arduino_Library.h>
 #include <Wire.h>
-#include "SparkFun_Qwiic_OpenLog_Arduino_Library.h"
+
+LPS25HB pressureSensor;
 OpenLog myLog;
 const byte OpenLogAddress = 42;
 
@@ -9,9 +10,10 @@ void setup() {
  Wire.begin();
  myLog.begin();
  pressureSensor.begin(Wire, LPS25HB_I2C_ADDR_DEF);
-  myLog.append("appendMe.txt");
+  myLog.append("Ekko.txt");
   myLog.println("This is recorded to appendMe.txt");
   myLog.syncFile();
+  Serial.begin(9600);
   // put your setup code here, to run once:
 
 }
